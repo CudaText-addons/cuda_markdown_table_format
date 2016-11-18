@@ -1,10 +1,10 @@
 {
-	// spaces between "|" and cell's text
-	"margin": 1,
+  // spaces between "|" and cell's text
+  "margin": 1,
 
-	// additional spaces before/after cell's text (depending on justification)
-	"padding": 0,
+  // additional spaces before/after cell's text (depending on justification)
+  "padding": 0,
 
-	// how text should be justified when not specified [LEFT, RIGHT, CENTER]
-	"default_justification": "LEFT"
+  // how text should be justified when not specified: "L", "R", "C" for left, right, center
+  "default_justify": "L"
 }

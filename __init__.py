@@ -1,8 +1,7 @@
-from cudatext import *
-import sys
 import os
-import json
 import re
+import json
+from cudatext import *
 
 from .simple_markdown import table
 from . import format_proc
@@ -10,23 +9,32 @@ from . import format_proc
 format_proc.INI = 'cuda_markdown_table_format.json'
 format_proc.MSG = '[MD Table Format] '
 
+
 def options():
-    res = {}
     fn = format_proc.ini_filename()
     if os.path.isfile(fn):
         s = open(fn, 'r').read()
         #del // comments
         s = re.sub(r'(^|[^:])//.*'  , r'\1', s)           
-        res = json.loads(s)
-    return res
+        d = json.loads(s)
+        
+        op_margin = d.get("margin", 1)
+        op_padding = d.get("padding", 0)
+        
+        s = d.get("default_justify", "L")
+        op_just = table.Justify.LEFT if s=="L" else table.Justify.RIGHT if s=="R" else table.Justify.CENTER
+        
+        return op_margin, op_padding, op_just 
+    else:
+        return 1, 0, table.Justify.LEFT
     
 
 def do_format(text):
-    op = options()
+    op_margin, op_padding, op_just = options()
     return table.format(text,
-                        margin = op["margin"], 
-                        padding = op["padding"],
-                        default_justify = table.Justify.from_string[op["default_justification"]],
+                        margin = op_margin, 
+                        padding = op_padding,
+                        default_justify = op_just,
                         )
 
 class Command:

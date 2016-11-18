@@ -1,3 +1,7 @@
 
+2016.11.19
+* refactor options()
+* new option for justify
+
 2016.11.18
 init, port from ST3
