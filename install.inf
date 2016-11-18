@@ -1,0 +1,22 @@
+[info]
+title=Markdown Table Format
+desc=Formats tables in Markdown files
+type=cudatext-plugin
+subdir=cuda_markdown_table_format
+homepage=https://github.com/CudaText-addons/cuda_markdown_table_format
+
+[item1]
+section=commands
+caption=Markdown Table Format\Format
+method=run
+lexers=Markdown
+
+[item2]
+section=commands
+caption=Markdown Table Format\Configure
+method=config_global
+
+[item3]
+section=commands
+caption=Markdown Table Format\Configure (local)
+method=config_local
